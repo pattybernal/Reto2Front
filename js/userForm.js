@@ -2,30 +2,18 @@ const urlUser= 'http://localhost:8080/api/user';
 
 const createUser = () => {
     //document.getElementById('txtNombre').value;
-    const id = $("#txtId").val();
-    const identification = $('#txtIdentifica').val();
-    const name = $('#txtNombre').val();
-    const address = $('#txtDir').val();
-    const cellPhone = $('#txtCell').val();
-    const email = $("#txtEmail").val();
-    const password = $("#txtClave").val();
-    const confirmar = $("#txtConfirmarClave").val();
-    const zone = $("#txtZone").val();
-    const type = $("#txtType").val(); 
+    const id = $("#id").val();
+    const identification = $('#identification').val();
+    const name = $('#name').val();
+    const address = $('#address').val();
+    const cellPhone = $('#cell').val();
+    const email = $("#email").val();
+    const password = $("#password").val();
+    const confirmar = $("#cfPasword").val();
+    const zone = $("#zone").val();
+    const type = $("#type").val(); 
     
-    $.ajax({
-        url: `${urlUser}/all`,
-        type: 'GET',
-        dataType: 'json',
-        success: function (respuesta){
-            for(let i=0;i<respuesta.length;i++){
-                if(respuesta[i].id==id){
-                    mostrarMensaje('Error','el Id ya existe!',true);
-                }
-            }        
-        }
-    });
-    //console.log(identification.length<8);
+   
     if(identification.length < 8 || identification.length > 10){
         mostrarMensaje('Error','Digite una identificación válida',true);
         return;
@@ -45,10 +33,10 @@ const createUser = () => {
         name: name,
         address: address,
         cellPhone: cellPhone,
-        email:  email,
+        email: email,
         password: password,
         zone: zone,
-        type:   type
+        type: type
     };
 
     $.ajax({
@@ -83,7 +71,7 @@ const createUser = () => {
                                     201: function () {
                                         mostrarMensaje('Confirmación', 'Cuenta creada de Forma correcta!');
                                         clearFormUser();
-                                        //alert('Empresa Creada');
+                                       
                                     }
                                 }
                             });
@@ -103,8 +91,7 @@ const createUser = () => {
 }
 
 const mostrarMensaje = (titulo, cuerpo, error) => {
-    //console.log("error",error);
-    //document.getElementById("titulomensaje").innerHTML = titulo;
+   
     $("#titulomensaje").html(titulo)
     $("#cuerpomensaje").html(cuerpo);
     $("#myToast").removeClass();
@@ -127,8 +114,8 @@ const iniciarSesion = () => {
 }
 
 const autenticar = ()=>{
-    const email = $("#txtEmail").val().trim();
-    const password = $("#txtPassword").val().trim();
+    const email = $("#email").val().trim();
+    const password = $("#password").val().trim();
 
     if (email.length === 0 || password.length === 0) {
         mostrarMensaje('Error', 'Debe escribir el email y la contraseña para ingresar', true);
@@ -239,16 +226,15 @@ const clearItem = (dataId) =>{
     });
 }
 const clearFormUser = () =>{
-    $("#txtId").val("");
-    $('#txtIdentifica').val("");
-    $('#txtNombre').val("");
-    $('#txtDir').val("");
-    $('#txtCell').val("");
-    $("#txtEmail").val("");
-    $("#txtClave").val("");
-    $("#txtConfirmarClave").val("");
-    $("#txtZone").val("");
-    $("#txtType").val("");  
+    $("#id").val("");
+    $('#identification').val("");
+    $('#name').val("");
+    $('#cell').val("");
+    $("#email").val("");
+    $("#password").val("");
+    $("#cfPassword").val("");
+    $("#zone").val("");
+    $("#type").val("");  
 }
 
 const itemByID = (idItem) =>{
@@ -257,11 +243,11 @@ const itemByID = (idItem) =>{
         type:"GET",
         dataType:"JSON",
         success:function(respuesta){
-            $('#id').val(respuesta.id);
-            $('#identification').val(respuesta.identification);
-            $('#name').val(respuesta.name);
-            $('#address').val(respuesta.address);
-            $('#cellPhone').val(respuesta.cellPhone);
+            $("#id").val(respuesta.id);
+            $("#identification").val(respuesta.identification);
+            $("#name").val(respuesta.name);
+            $("#address").val(respuesta.address);
+            $("#cell").val(respuesta.cellPhone);
             $("#email").val(respuesta.email);
             $("#password").val(respuesta.password);
             $("#zone").val(respuesta.zone);
@@ -269,7 +255,7 @@ const itemByID = (idItem) =>{
         }
 });
     $("#updateUser").prop("hidden", false);
-    //$("#updateUser").prop("hidden", true);
+   
 }
 const update = () =>{
     let data ={
@@ -277,9 +263,10 @@ const update = () =>{
         identification: $('#identification').val().trim(),
         name:$('#name').val().trim(),
         address: $('#address').val().trim(),
-        cellPhone: $('#cellPhone').val().trim(),
+        cellPhone: $('#cell').val().trim(),
         email: $("#email").val().trim(),
         password: $("#password").val().trim(),
+        password: $("#cfPassword").val().trim(),
         zone: $("#zone").val().trim(),
         type: $("#type").val().trim(), 
     };
@@ -292,7 +279,7 @@ const update = () =>{
             contentType: "application/JSON; charsert=utf-8",
             statusCode: {
             201: function (){
-                //console.log(data);
+               
                 mostrarMensaje('Confirmación', 'Usuario actualizado con exito!')
                 $("#updateUser").prop("hidden", true);
                 $("#tableUser").empty();
@@ -315,7 +302,7 @@ const clearUpdateForm = () =>{
     $('#identification').val("");
     $('#name').val("");
     $('#address').val("");
-    $('#cellPhone').val("");
+    $('#cell').val("");
     $("#email").val("");
     $("#password").val("");
     $("#zone").val("");

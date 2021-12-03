@@ -1,10 +1,10 @@
 $("#login").click(function(){
-    if($.trim($("#email").val()) == "" || $.trim($("#contrasena").val()) == ""){
+    if($.trim($("#email").val()) == "" || $.trim($("#password").val()) == ""){
         alert("Por favor ingrese el correo y la contraseña");
     }else{
         let datos = {
             email: $("#email").val(),
-            contrasena: $("#contrasena").val(),
+            contrasena: $("#password").val(),
             
         }
         $.ajax({
@@ -21,7 +21,7 @@ $("#login").click(function(){
 
 function validarUsuario(response) {
     if(response.id != null){
-        location.href = "bienvenida.html";
+        location.href = "index.html";
         alert("Bienvenido " + response.name);
     }else{
         alert("Usuario no registrado");
@@ -39,7 +39,7 @@ $("#guardar").click(function(){
                 name: $("#usuarioRegistro").val()
             }
             $.ajax({
-                url:"http://152.67.253.190:8080/api/User/new",
+                url:"http://localhost:8080/api/User/new",
                 method:"POST",
                 dataType:"json",
                 data:JSON.stringify(datos),
