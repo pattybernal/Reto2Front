@@ -1,0 +1,53 @@
+body {
+    background-image: url("../img/480-degradados.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+*img {
+    width: 80px;
+}
+h1{
+    font-size: 80px;
+    color:#EE1449 ;
+    margin-top: -20px; 
+}
+h2{
+    font-size: 50px;
+    color:#ffffff ;
+}
+p{
+    font-size: 20px;
+    color: #ffffff;
+}
+.link{
+    color: #a12222;  
+    font-size: x-large;
+}
+
+.caja { 
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    color: #ffffff; 
+    font-size: 18px; 
+    font-weight: 400; 
+    text-align: center; 
+    background: #889ccf;
+    width: 500px; 
+    margin: 0 auto;
+    position: relative;
+    padding: 20px; 
+    border-radius: 35px 0px 35px 0px; 
+    -moz-border-radius: 35px 0px 35px 0px; 
+    -webkit-border-radius: 35px 0px 35px 0px; 
+    border: 5px solid #5878ca;
+}
+.a:hover {
+    color: black;
+    /*background-color: #96eeb9*/
+}
+.form-label{
+    color: #ffffff;
+    font-weight: bold
+}
+carousel-inner{
+
+}
